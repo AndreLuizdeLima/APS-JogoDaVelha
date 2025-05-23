@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0c2959-112a-4a53-a32d-96a9bd6fbbf9" name="Changes" comment="bah">
-      <change afterPath="$PROJECT_DIR$/src/jogo/Usuario.java" afterDir="false" />
+    <list default="true" id="4f0c2959-112a-4a53-a32d-96a9bd6fbbf9" name="Changes" comment="criei a opção de pedir o nome de usuario e de escolha de qual ele ira usar (X ou O)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/biblioteca/Variavel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogo/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +53,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -101,13 +103,22 @@
       <option name="project" value="LOCAL" />
       <updated>1747955999931</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="criei a opção de pedir o nome de usuario e de escolha de qual ele ira usar (X ou O)">
+      <option name="closed" value="true" />
+      <created>1747959693206</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1747959693206</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="teste" />
     <MESSAGE value="first commit" />
     <MESSAGE value="bah" />
-    <option name="LAST_COMMIT_MESSAGE" value="bah" />
+    <MESSAGE value="criei a opção de pedir o nome de usuario e de escolha de qual ele ira usar (X ou O)" />
+    <option name="LAST_COMMIT_MESSAGE" value="criei a opção de pedir o nome de usuario e de escolha de qual ele ira usar (X ou O)" />
   </component>
 </project>
