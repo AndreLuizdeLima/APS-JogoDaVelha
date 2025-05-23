@@ -1,5 +1,7 @@
+import static jogo.Usuario.setarJogador;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world! babhhhsafasf");
+        setarJogador();
     }
 }
