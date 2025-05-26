@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0c2959-112a-4a53-a32d-96a9bd6fbbf9" name="Changes" comment="add imprimiTabuleiro">
-      <change afterPath="$PROJECT_DIR$/src/jogo/QuemJoga.java" afterDir="false" />
+    <list default="true" id="4f0c2959-112a-4a53-a32d-96a9bd6fbbf9" name="Changes" comment="add quemJoga">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ferramentas/Maquina.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jogo/Jogo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ferramentas/Aleatoridade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ferramentas/Aleatoridade.java" afterDir="false" />
@@ -46,6 +48,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true"
@@ -68,11 +71,20 @@
       <option name="project" value="LOCAL" />
       <updated>1748300583650</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add quemJoga">
+      <option name="closed" value="true" />
+      <created>1748301567628</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1748301567629</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add imprimiTabuleiro" />
-    <option name="LAST_COMMIT_MESSAGE" value="add imprimiTabuleiro" />
+    <MESSAGE value="add quemJoga" />
+    <option name="LAST_COMMIT_MESSAGE" value="add quemJoga" />
   </component>
 </project>
