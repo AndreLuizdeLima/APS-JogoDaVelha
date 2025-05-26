@@ -9,10 +9,12 @@ public class Maquina{
         }
 
         if (campoValido.isEmpty()) {
-            return -1; 
+            return -1;
         }
 
         Random rd = new Random();
         return campoValido.get(rd.nextInt(campoValido.size()));
     }
+
+
 }
