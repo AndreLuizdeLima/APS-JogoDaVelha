@@ -1,4 +1,6 @@
- public class Ranking {
+package ferramentas;
+
+public class Ranking {
 
     static int vitoriasPlayer = 0;
     static int vitoriasMaquina = 0;
