@@ -1,14 +1,15 @@
 package jogo;
 
+import static ferramentas.Maquina.maquinaJogada;
 import static jogo.QuemJoga.quemJoga;
 import static jogo.Usuario.escolhaSimbulo;
 import static jogo.Usuario.setarJogador;
 
 public class Jogo {
 
-    private char[] tabuleiro = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
-
     public static void jogar() {
+
+        char[] tabuleiro = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
 
         while (true) {
             setarJogador();
@@ -22,7 +23,7 @@ public class Jogo {
 
                 } else if (quemJoga() == 0) {
                     //vez da maquina
-
+                    int jogada = maquinaJogada(tabuleiro);
                 }
 
             }
