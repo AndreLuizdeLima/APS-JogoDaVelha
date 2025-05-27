@@ -20,6 +20,4 @@
         System.out.println("Máquina: " + vitoriasMaquina);
         System.out.println("Empates: " + empates);
     }
-
-    
 }
