@@ -10,7 +10,6 @@ import static jogo.Usuario.setarJogador;
 public class Jogo {
 
     public static void jogar() {
-
         char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
 
         while (true) {
