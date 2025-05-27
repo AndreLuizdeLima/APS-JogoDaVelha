@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Maquina{
-    public static int maquina01(char[] tabuleiro) {
+    public static int maquinaJogada(char[] tabuleiro) {
         List<Integer> campoValido = new ArrayList<>();
 
         for (int i = 0; i < tabuleiro.length; i++) {
