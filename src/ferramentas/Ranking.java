@@ -7,12 +7,12 @@ public class Ranking {
     static int empates = 0;
 
     public static void registrarVitoria(int vencedor) {
-        if (vencedor == 1) {
+        if (vencedor == 2) {
             vitoriasPlayer++;
-        } else if (vencedor == 0) {
+        }if (vencedor == 1) {
             vitoriasMaquina++;
-        } else {
-            empates++;
+        }if (vencedor == 0) {
+              empates++;
         }
     }
 
