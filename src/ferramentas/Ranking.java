@@ -9,9 +9,9 @@ public class Ranking {
     public static void registrarVitoria(int vencedor) {
         if (vencedor == 2) {
             vitoriasPlayer++;
-        } if (vencedor == 1) {
+        }if (vencedor == 1) {
             vitoriasMaquina++;
-        } if (vencedor == 0) {
+        }if (vencedor == 0) {
               empates++;
         }
     }
