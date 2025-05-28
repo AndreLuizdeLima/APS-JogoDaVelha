@@ -2,6 +2,8 @@ package jogo;
 
 import java.util.Scanner;
 
+import static jogo.ModoNormal.modoNormal;
+
 public class Menu {
     public static void menu() {
         Scanner scan = new Scanner(System.in);
@@ -24,7 +26,7 @@ public class Menu {
             if (dificuldade == 1){
                 //funçao da dificuldade impossivel
             }else {
-                //funcao da dificuldade normal
+                modoNormal();
             }
         }else {
             //funcao jogar com amigo
