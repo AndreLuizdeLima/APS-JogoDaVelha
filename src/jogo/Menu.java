@@ -2,8 +2,10 @@ package jogo;
 
 import java.util.Scanner;
 
+import static jogo.modoImpossivel.Loop.jogarModoDificil;
+
 public class Menu {
-    public static void menu() {
+    public static void menu(char[] tabuleiro) {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Selecione uma opção de jogo:");
@@ -22,7 +24,7 @@ public class Menu {
             int dificuldade = scan.nextInt();
 
             if (dificuldade == 1){
-                //funçao da dificuldade impossivel
+                jogarModoDificil(tabuleiro);
             }else {
                 //funcao da dificuldade normal
             }

@@ -14,9 +14,9 @@ public class JogadasUser {
         int coluna = scan.nextInt();
 
         int jogada = setaJogada(linha, coluna);
-        boolean isValido =  validaJogada(jogada, tabuleiro);
+        boolean Valido =  validaJogada(jogada, tabuleiro);
 
-        if (isValido == true){
+        if (Valido == true){
             tabuleiro[jogada] = sim;
         }
     }
