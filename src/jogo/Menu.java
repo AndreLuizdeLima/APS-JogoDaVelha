@@ -2,7 +2,6 @@ package jogo;
 
 import java.util.Scanner;
 
-import static jogo.modoImpossivel.Loop.jogarModoDificil;
 
 public class Menu {
     public static void menu(char[] tabuleiro) {
@@ -26,7 +25,7 @@ public class Menu {
             if (dificuldade == 1){
                 jogarModoDificil(tabuleiro);
             }else {
-                //funcao da dificuldade normal
+                modoNormal();
             }
         }else {
             //funcao jogar com amigo
