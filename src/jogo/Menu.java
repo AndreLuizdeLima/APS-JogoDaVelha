@@ -9,31 +9,52 @@ import static jogo.modoImpossivel.Loop.jogarModoDificil;
 public class Menu {
     public static void menu() {
         Scanner scan = new Scanner(System.in);
+        int opcao;
 
-        System.out.println("Selecione uma opção de jogo:");
-        System.out.println("""
+        // Loop para garantir escolha válida de jogo
+        while (true) {
+            System.out.println("Selecione uma opção de jogo:");
+            System.out.print("""
                 1 - Jogar contra a máquina
                 2 - Jogar contra um amigo
-                """);
-        int opcao = scan.nextInt();
+                Sua escolha: """);
+            opcao = scan.nextInt();
+
+            if (opcao == 1 || opcao == 2) {
+                break;
+            } else {
+                System.out.println("Opção inválida. Por favor, escolha 1 ou 2.\n");
+            }
+        }
 
         if (opcao == 1) {
-            System.out.println("Qual modo de dificuldade você deseja?");
-            System.out.println("""
+            int dificuldade;
+
+            // Loop para garantir escolha válida de dificuldade
+            while (true) {
+                System.out.println("Qual modo de dificuldade você deseja?");
+                System.out.print("""
                     1 - Impossível
                     2 - Normal
-                    """);
-            int dificuldade = scan.nextInt();
+                    Sua escolha: """);
+                dificuldade = scan.nextInt();
 
-            if (dificuldade == 1) {
-                jogarModoDificil();
-            } else {
-                modoNormal();
+                if (dificuldade == 1) {
+                    jogarModoDificil();
+                    break;
+                } else if (dificuldade == 2) {
+                    modoNormal();
+                    break;
+                } else {
+                    System.out.println("Dificuldade inválida. Por favor, escolha 1 ou 2.\n");
+                }
             }
         } else {
-            //funcao jogar com amigo
+            // Função para jogar com amigo (a implementar!!!!)
+
         }
     }
+
 
     public static int jogarNovamente() {
         Scanner scan = new Scanner(System.in);
