@@ -2,6 +2,9 @@ package jogo;
 
 import java.util.Scanner;
 
+import static jogo.ModoNormal.modoNormal;
+import static jogo.modoImpossivel.Loop.jogarModoDificil;
+
 
 public class Menu {
     public static void menu(char[] tabuleiro) {
