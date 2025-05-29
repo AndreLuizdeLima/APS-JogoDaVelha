@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class JogadasUser {
     public static void ondeJoga(char[] tabuleiro, String simbolo) {
-        boolean isValido = false;
+        boolean jogadaValida = false;
         do {
             Scanner scan = new Scanner(System.in);
             char sim = simbolo.charAt(0);
@@ -16,14 +16,14 @@ public class JogadasUser {
             int coluna = scan.nextInt();
 
             int jogada = setaJogada(linha, coluna);
-            isValido = validaJogada(jogada, tabuleiro);
+            jogadaValida = validaJogada(jogada, tabuleiro);
 
-            if (isValido == true) {
+            if (jogadaValida == true) {
                 tabuleiro[jogada] = sim;
             }else {
                 System.out.println("\nPosição inválida \n");
             }
-        }while (isValido == false);
+        }while (jogadaValida == false);
     }
 
     public static int setaJogada(int linha, int coluna) {
