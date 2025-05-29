@@ -6,11 +6,9 @@ public class QuemVenceu {
     // simbolo é sempre o jogador
     // 1 maquina 2 jogador 0 empate
 
-    public static Integer quemGanhou(char[] tabuleiro, String simboloJogador, String simboloMaquina){
+    public static Integer quemGanhou(char[] tabuleiro, char simboloJogador, char simboloMaquina){
 
-        char simboloJogadorChar = simboloJogador.charAt(0);
-        char simboloMaquinaChar = simboloMaquina.charAt(0);
-
+        
         int[][] combinacoes = {
                 {0, 1, 2},
                 {3, 4, 5},
@@ -23,17 +21,17 @@ public class QuemVenceu {
         };
 
         for (int[] combo : combinacoes) {
-            if (tabuleiro[combo[0]] == simboloMaquinaChar &&
-                    tabuleiro[combo[1]] == simboloMaquinaChar &&
-                    tabuleiro[combo[2]] == simboloMaquinaChar) {
+            if (tabuleiro[combo[0]] == simboloMaquina &&
+                    tabuleiro[combo[1]] == simboloMaquina &&
+                    tabuleiro[combo[2]] == simboloMaquina) {
                 return 1;
             }
         }
 
         for (int[] combo : combinacoes) {
-            if (tabuleiro[combo[0]] == simboloJogadorChar &&
-                    tabuleiro[combo[1]] == simboloJogadorChar &&
-                    tabuleiro[combo[2]] == simboloJogadorChar) {
+            if (tabuleiro[combo[0]] == simboloJogador &&
+                    tabuleiro[combo[1]] == simboloJogador &&
+                    tabuleiro[combo[2]] == simboloJogador) {
                 return 2;
             }
         }
