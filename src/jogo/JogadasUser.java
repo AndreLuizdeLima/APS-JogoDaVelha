@@ -16,7 +16,7 @@ public class JogadasUser {
         int jogada = setaJogada(linha, coluna);
         boolean isValido =  validaJogada(jogada, tabuleiro);
 
-        if (isValido){
+        if (isValido == true){
             tabuleiro[jogada] = sim;
         }
     }
