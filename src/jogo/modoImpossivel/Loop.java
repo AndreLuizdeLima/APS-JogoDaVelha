@@ -1,6 +1,7 @@
 package jogo.modoImpossivel;
 
 import static ferramentas.ImprimeTabuleiro.imprimeTabuleiro;
+import static ferramentas.Ranking.registrarVitoria;
 import static jogo.JogadasUser.ondeJoga;
 import static jogo.Menu.jogarNovamente;
 import static jogo.QuemVenceu.quemGanhou;
@@ -37,15 +38,18 @@ public class Loop {
                     imprimeTabuleiro(tabuleiro);
                     if (resultado == 2) {
                         System.out.println("Você venceu!");
+                        registrarVitoria(2);
                     } else if (resultado == 1) {
                         System.out.println("A máquina venceu!");
+                        registrarVitoria(1);
                     } else {
                         System.out.println("Empate!");
+                        registrarVitoria(0);
                     }
                     break;
                 }
 
-                vez = 1 - vez; // alterna entre 0 e 1
+                vez = 1 - vez;
             }
         } while (jogarNovamente() == 1);
     }

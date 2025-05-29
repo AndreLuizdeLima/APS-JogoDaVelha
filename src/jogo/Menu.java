@@ -2,6 +2,7 @@ package jogo;
 
 import java.util.Scanner;
 
+import static ferramentas.Ranking.exibirRanking;
 import static jogo.ModoNormal.modoNormal;
 import static jogo.modoImpossivel.Loop.jogarModoDificil;
 
@@ -51,8 +52,10 @@ public class Menu {
             if (opcao == 1) {
                 System.out.println("Boa sorte!");
             } else if (opcao == 2) {
-                menu(); // certifique-se que esse método existe
+                exibirRanking();
+                menu();
             } else if (opcao == 3) {
+                exibirRanking();
                 System.exit(0);
             } else {
                 System.out.println("Opção inválida. Tente novamente.");
