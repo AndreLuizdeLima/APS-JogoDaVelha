@@ -1,49 +1,52 @@
 package jogo.modoImpossivel;
-import jogo.Usuario;
 
 import static ferramentas.ImprimeTabuleiro.imprimeTabuleiro;
 import static jogo.JogadasUser.ondeJoga;
+import static jogo.Menu.jogarNovamente;
+import static jogo.QuemVenceu.quemGanhou;
 import static jogo.Usuario.escolhaSimbulo;
+import static jogo.Usuario.setarJogador;
 import static jogo.modoImpossivel.ModoImpossivel.*;
+import static jogo.QuemJoga.quemJoga;
 
 public class Loop {
-    public static void jogarModoDificil(char[] tabuleiro) {
-        String simboloJogador = escolhaSimbulo(); // ex: "X" ou "O"
-        char simboloJ = simboloJogador.charAt(0);
-        char simboloMaquina = (simboloJ == 'X') ? 'O' : 'X';
+    public static void jogarModoDificil() {
+        String nomeUser = setarJogador();
 
-        while (true) {
-            imprimeTabuleiro(tabuleiro);
+        do {
+            char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
+            String simboloJogador = escolhaSimbulo();
+            char simboloJ = simboloJogador.charAt(0);
+            char simboloMaquina = (simboloJ == 'X') ? 'O' : 'X';
 
-            System.out.println("Sua vez de jogar:");
-            ondeJoga(tabuleiro, simboloJogador);
+            int vez = quemJoga(); // 0 = máquina, 1 = jogador
 
-            if (verificaVencedor(tabuleiro, simboloJ)) {
+            while (true) {
                 imprimeTabuleiro(tabuleiro);
-                System.out.println("Você venceu!");
-                break;
-            }
 
-            if (tabuleiroCheio(tabuleiro)) {
-                imprimeTabuleiro(tabuleiro);
-                System.out.println("Empate!");
-                break;
-            }
+                if (vez == 1) {
+                    System.out.println("Sua vez de jogar:");
+                    ondeJoga(tabuleiro, simboloJogador);
+                } else {
+                    System.out.println("Vez da máquina:");
+                    modoDificil(tabuleiro, simboloMaquina, simboloJ);
+                }
 
-            System.out.println("Vez da máquina:");
-            modoDificil(tabuleiro, simboloMaquina, simboloJ);
+                Integer resultado = quemGanhou(tabuleiro, simboloJ, simboloMaquina);
+                if (resultado != null) {
+                    imprimeTabuleiro(tabuleiro);
+                    if (resultado == 2) {
+                        System.out.println("Você venceu!");
+                    } else if (resultado == 1) {
+                        System.out.println("A máquina venceu!");
+                    } else {
+                        System.out.println("Empate!");
+                    }
+                    break;
+                }
 
-            if (verificaVencedor(tabuleiro, simboloMaquina)) {
-                imprimeTabuleiro(tabuleiro);
-                System.out.println("A máquina venceu!");
-                break;
+                vez = 1 - vez; // alterna entre 0 e 1
             }
-
-            if (tabuleiroCheio(tabuleiro)) {
-                imprimeTabuleiro(tabuleiro);
-                System.out.println("Empate!");
-                break;
-            }
-        }
+        } while (jogarNovamente() == 1);
     }
 }

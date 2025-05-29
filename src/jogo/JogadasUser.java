@@ -4,21 +4,26 @@ import java.util.Scanner;
 
 public class JogadasUser {
     public static void ondeJoga(char[] tabuleiro, String simbolo) {
-        Scanner scan = new Scanner(System.in);
-        char sim = simbolo.charAt(0);
+        boolean isValido = false;
+        do {
+            Scanner scan = new Scanner(System.in);
+            char sim = simbolo.charAt(0);
 
-        System.out.println("Informe em qual linha deseja jogar (1 a 3)");
-        int linha = scan.nextInt();
+            System.out.println("Informe em qual linha deseja jogar (1 a 3)");
+            int linha = scan.nextInt();
 
-        System.out.println("Informe em qual coluna deseja jogar(1 a 3)");
-        int coluna = scan.nextInt();
+            System.out.println("Informe em qual coluna deseja jogar(1 a 3)");
+            int coluna = scan.nextInt();
 
-        int jogada = setaJogada(linha, coluna);
-        boolean isValido =  validaJogada(jogada, tabuleiro);
+            int jogada = setaJogada(linha, coluna);
+            isValido = validaJogada(jogada, tabuleiro);
 
-        if (isValido == true){
-            tabuleiro[jogada] = sim;
-        }
+            if (isValido == true) {
+                tabuleiro[jogada] = sim;
+            }else {
+                System.out.println("\nPosição inválida \n");
+            }
+        }while (isValido == false);
     }
 
     public static int setaJogada(int linha, int coluna) {
