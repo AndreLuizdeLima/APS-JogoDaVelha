@@ -6,7 +6,7 @@ public class QuemVenceu {
     // simbolo é sempre o jogador
     // 1 maquina 2 jogador 0 empate
 
-    public static Integer quemGanhou(char[] tabuleiro, char simboloJogador, char simboloMaquina){
+    public static Integer quemGanhou(char[] tabuleiro, Character simboloJogador, Character simboloMaquina){
 
         
         int[][] combinacoes = {

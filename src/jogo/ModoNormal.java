@@ -2,6 +2,7 @@ package jogo;
 
 import java.util.Scanner;
 
+import static ferramentas.ImprimeTabuleiro.imprimeTabuleiro;
 import static ferramentas.Maquina.maquinaJogada;
 import static ferramentas.Ranking.registrarVitoria;
 import static jogo.JogadasUser.ondeJoga;
@@ -26,12 +27,13 @@ public class ModoNormal {
                 char simboloMaquina = (simboloJogador == 'X') ? 'O' : 'X';
                 int quemJoga = quemJoga();
 
-                boolean condPara = true;
-                whileInterno:
-                while(true){
-                    if (quemJoga() == 1) {
+                while (true) {
+                    int quemJogara = quemJoga();
+
+                    if (quemJogara == 1) {
+                        imprimeTabuleiro(tabuleiro);
                         ondeJoga(tabuleiro, String.valueOf(simboloJogador));
-                    } else if (quemJoga() == 0) {
+                    } else if (quemJogara == 0) {
                         int jogada;
                         boolean isValido = false;
                         while (!isValido) {
@@ -42,29 +44,31 @@ public class ModoNormal {
                             }
                         }
                     }
-                    int result = quemGanhou(tabuleiro,simboloJogador,simboloMaquina);
+                    Integer result = quemGanhou(tabuleiro, simboloJogador, simboloMaquina);
 
-                    if(result == 1){
-                        System.out.println("maquina venceu");
-                        registrarVitoria(1);
-                        break whileMedio;
-                    }
-                    if (result == 2){
-                        System.out.println("jogador ganhou");
-                        registrarVitoria(2);
-                        break whileMedio;
-                    }
-                    if(result == 0){
-                        System.out.println("Empate");
-                        registrarVitoria(0);
-                        break whileMedio;
+                    if (result != null) {
+                        if (result == 1) {
+                            System.out.println("maquina venceu");
+                            registrarVitoria(1);
+                            break whileMedio;
+                        }
+                        if (result == 2) {
+                            System.out.println("jogador ganhou");
+                            registrarVitoria(2);
+                            break whileMedio;
+                        }
+                        if (result == 0) {
+                            System.out.println("Empate");
+                            registrarVitoria(0);
+                            break whileMedio;
+                        }
                     }
                 }
             }
 
             System.out.print("Deseja jogar novamente(S/N)");
             String escolha = sc.nextLine();
-            if(escolha.toUpperCase().charAt(0) == 'N'){
+            if (escolha.toUpperCase().charAt(0) == 'N') {
                 break whileAlto;
             }
         }

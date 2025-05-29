@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f0c2959-112a-4a53-a32d-96a9bd6fbbf9" name="Changes" comment="add modoNormal">
+    <list default="true" id="4f0c2959-112a-4a53-a32d-96a9bd6fbbf9" name="Changes" comment="update modoNormal">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogo/JogadasUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/JogadasUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jogo/ModoNormal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/ModoNormal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jogo/QuemVenceu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/QuemVenceu.java" afterDir="false" />
     </list>
@@ -139,7 +139,31 @@
       <option name="project" value="LOCAL" />
       <updated>1748473599134</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update modoNormal">
+      <option name="closed" value="true" />
+      <created>1748484939533</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1748484939533</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update modoNormal">
+      <option name="closed" value="true" />
+      <created>1748485054684</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1748485054684</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update modoNormal">
+      <option name="closed" value="true" />
+      <created>1748561918161</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1748561918161</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +186,20 @@
     <MESSAGE value="corecao de bugs" />
     <MESSAGE value="add classe quemVenceu" />
     <MESSAGE value="add modoNormal" />
-    <option name="LAST_COMMIT_MESSAGE" value="add modoNormal" />
+    <MESSAGE value="update modoNormal" />
+    <option name="LAST_COMMIT_MESSAGE" value="update modoNormal" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
