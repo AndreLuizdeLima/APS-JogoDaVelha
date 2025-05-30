@@ -23,7 +23,7 @@ public class ModoNormal {
             whileMedio:
             while (true) {
                 String nomeJogador = setarJogador();
-                char simboloJogador = escolhaSimbulo().charAt(0);
+                char simboloJogador = Character.toUpperCase(escolhaSimbulo().charAt(0));
                 char simboloMaquina = (simboloJogador == 'X') ? 'O' : 'X';
                 int quemJoga = quemJoga();
 
