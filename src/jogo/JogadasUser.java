@@ -43,11 +43,10 @@ public class JogadasUser {
     }
 
     public static boolean validaJogada(int posVetor, char[] tabuleiro) {
-        boolean teste = false;
         if (tabuleiro[posVetor] == '-') {
-            teste = true;
+            return true;
         }
-        return teste;
+        return false;
     }
 }
 
