@@ -1,29 +1,23 @@
 package jogo;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
-import static ferramentas.ImprimeTabuleiro.imprimeTabuleiro;
-import static ferramentas.Ranking.*;
-
 public class Multiplayer {
-
     public static void modoComAmigo() {
         Scanner scanner = new Scanner(System.in);
+        char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
 
+        // Nomes
         System.out.print("Nome do Jogador 1: ");
         String nome1 = scanner.nextLine();
         System.out.print("Nome do Jogador 2: ");
         String nome2 = scanner.nextLine();
 
-        setNomes(nome1, nome2);
-
+        // Símbolos
         char simbolo1, simbolo2;
         while (true) {
             System.out.print(nome1 + ", escolha seu símbolo (X ou O): ");
             simbolo1 = Character.toUpperCase(scanner.next().charAt(0));
-            scanner.nextLine(); // limpar buffer
             if (simbolo1 == 'X' || simbolo1 == 'O') break;
             System.out.println("Símbolo inválido.");
         }
@@ -31,82 +25,52 @@ public class Multiplayer {
 
         System.out.println(nome1 + " é '" + simbolo1 + "', " + nome2 + " é '" + simbolo2 + "'");
 
-        Map<String, Integer> coordenadas = new HashMap<>();
-        coordenadas.put("A1", 0); coordenadas.put("A2", 1); coordenadas.put("A3", 2);
-        coordenadas.put("B1", 3); coordenadas.put("B2", 4); coordenadas.put("B3", 5);
-        coordenadas.put("C1", 6); coordenadas.put("C2", 7); coordenadas.put("C3", 8);
+        // Começa o jogo
+        String jogadorAtual = nome1;
+        char simboloAtual = simbolo1;
 
-        boolean jogarNovamente;
-        do {
-            char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
-            String jogadorAtual = nome1;
-            char simboloAtual = simbolo1;
+        while (true) {
+            imprimirTabuleiro(tabuleiro);
+            System.out.println(jogadorAtual + ", escolha uma posição (1-9): ");
+            int posicao = scanner.nextInt() - 1;
 
-            while (true) {
-                imprimeTabuleiro(tabuleiro);
-                System.out.print(jogadorAtual + ", escolha uma posição (ex: A1, B3): ");
-                String entrada = scanner.next().toUpperCase();
-
-                if (!coordenadas.containsKey(entrada)) {
-                    System.out.println("Posição inválida. Tente novamente.");
-                    continue;
-                }
-
-                int posicao = coordenadas.get(entrada);
-                if (tabuleiro[posicao] != '-') {
-                    System.out.println("Essa posição já está ocupada. Tente outra.");
-                    continue;
-                }
-
-                tabuleiro[posicao] = simboloAtual;
-
-                Integer resultado = QuemVenceu.quemGanhou(tabuleiro, simbolo1, simbolo2);
-                if (resultado != null) {
-                    imprimeTabuleiro(tabuleiro);
-                    if (resultado == 2) {
-                        System.out.println(jogadorAtual + " venceu!");
-                        if (jogadorAtual.equals(nome1)) {
-                            registrarVitoria(2);
-                        } else {
-                            registrarVitoria(3);
-                        }
-                    } else if (resultado == 0) {
-                        System.out.println("Empate!");
-                        registrarVitoria(0);
-                    }
-                    exibirRanking();
-                    break;
-                }
-
-                // Trocar jogador
-                if (jogadorAtual.equals(nome1)) {
-                    jogadorAtual = nome2;
-                    simboloAtual = simbolo2;
-                } else {
-                    jogadorAtual = nome1;
-                    simboloAtual = simbolo1;
-                }
+            if (posicao < 0 || posicao > 8 || tabuleiro[posicao] != '-') {
+                System.out.println("Jogada inválida. Tente novamente.");
+                continue;
             }
 
-            // Pergunta se quer jogar novamente
-            int escolha;
-            while (true) {
-                System.out.println("\nDeseja jogar novamente ou voltar ao menu?");
-                System.out.println("1 - Jogar novamente");
-                System.out.println("2 - Voltar ao menu");
-                System.out.print("Escolha: ");
-                if (scanner.hasNextInt()) {
-                    escolha = scanner.nextInt();
-                    scanner.nextLine(); // limpar buffer
-                    if (escolha == 1 || escolha == 2) break;
-                } else {
-                    scanner.nextLine(); // limpar entrada inválida
-                }
-                System.out.println("Escolha inválida. Tente novamente.");
+            tabuleiro[posicao] = simboloAtual;
+
+            int resultado = QuemVenceu.quemGanhou(tabuleiro, simbolo1, simbolo2);
+            if (resultado == 2) {
+                imprimirTabuleiro(tabuleiro);
+                System.out.println(jogadorAtual + " venceu!");
+                break;
+            } else if (resultado == 0) {
+                imprimirTabuleiro(tabuleiro);
+                System.out.println("Empate!");
+                break;
             }
 
-            jogarNovamente = (escolha == 1);
+            // Trocar jogador
+            if (jogadorAtual.equals(nome1)) {
+                jogadorAtual = nome2;
+                simboloAtual = simbolo2;
+            } else {
+                jogadorAtual = nome1;
+                simboloAtual = simbolo1;
+            }
+        }
+    }
 
-        } while (jogarNovamente);
+    private static void imprimirTabuleiro(char[] tabuleiro) {
+        System.out.println();
+        for (int i = 0; i < tabuleiro.length; i++) {
+            System.out.print(" " + tabuleiro[i] + " ");
+            if ((i + 1) % 3 == 0) System.out.println();
+        }
+        System.out.println();
     }
 }
+
+

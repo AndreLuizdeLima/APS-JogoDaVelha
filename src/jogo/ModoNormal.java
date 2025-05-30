@@ -7,6 +7,7 @@ import static ferramentas.Maquina.maquinaJogada;
 import static ferramentas.Ranking.registrarVitoria;
 import static jogo.JogadasUser.ondeJoga;
 import static jogo.JogadasUser.validaJogada;
+import static jogo.Menu.jogarNovamente;
 import static jogo.Menu.menu;
 import static jogo.QuemJoga.quemJoga;
 import static jogo.QuemVenceu.quemGanhou;
@@ -19,7 +20,7 @@ public class ModoNormal {
         char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
 
         whileAlto:
-        while (true) {
+        do {
             whileMedio:
             while (true) {
                 String nomeJogador = setarJogador();
@@ -71,13 +72,8 @@ public class ModoNormal {
                 }
             }
 
-            System.out.print("Deseja jogar novamente(S/N)");
-            String escolha = sc.nextLine();
-            if (escolha.toUpperCase().charAt(0) == 'N') {
-                menu();
-                break whileAlto;
-            }
-        }
+
+        } while(jogarNovamente() == 1);
     }
 
 }

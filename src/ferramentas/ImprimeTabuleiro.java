@@ -10,11 +10,11 @@ public class ImprimeTabuleiro {
         System.out.print("""
              1   2   3
            +---+---+---+
-        A  | %s | %s | %s |
+        1  | %s | %s | %s |
            +---+---+---+
-        B  | %s | %s | %s |
+        2  | %s | %s | %s |
            +---+---+---+
-        C  | %s | %s | %s |
+        3  | %s | %s | %s |
            +---+---+---+
         """.formatted(
                 posicoes[0], posicoes[1], posicoes[2],
