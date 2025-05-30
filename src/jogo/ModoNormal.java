@@ -17,10 +17,9 @@ import static jogo.Usuario.setarJogador;
 public class ModoNormal {
     public static void modoNormal() {
         Scanner sc = new Scanner(System.in);
-        char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
-
         whileAlto:
         do {
+            char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
             whileMedio:
             while (true) {
                 String nomeJogador = setarJogador();
