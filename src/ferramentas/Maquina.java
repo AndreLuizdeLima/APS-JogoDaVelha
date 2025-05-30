@@ -9,7 +9,7 @@ public class Maquina{
         List<Integer> campoValido = new ArrayList<>();
 
         for (int i = 0; i < tabuleiro.length; i++) {
-            if (tabuleiro[i] == ' ') {
+            if (tabuleiro[i] == '-') {
                 campoValido.add(i);
             }
         }

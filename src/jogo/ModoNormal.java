@@ -7,6 +7,7 @@ import static ferramentas.Maquina.maquinaJogada;
 import static ferramentas.Ranking.registrarVitoria;
 import static jogo.JogadasUser.ondeJoga;
 import static jogo.JogadasUser.validaJogada;
+import static jogo.Menu.menu;
 import static jogo.QuemJoga.quemJoga;
 import static jogo.QuemVenceu.quemGanhou;
 import static jogo.Usuario.escolhaSimbulo;
@@ -19,7 +20,6 @@ public class ModoNormal {
 
         whileAlto:
         while (true) {
-
             whileMedio:
             while (true) {
                 String nomeJogador = setarJogador();
@@ -27,12 +27,14 @@ public class ModoNormal {
                 char simboloMaquina = (simboloJogador == 'X') ? 'O' : 'X';
                 int quemJoga = quemJoga();
 
+                imprimeTabuleiro(tabuleiro);
                 while (true) {
                     int quemJogara = quemJoga();
 
                     if (quemJogara == 1) {
-                        imprimeTabuleiro(tabuleiro);
                         ondeJoga(tabuleiro, String.valueOf(simboloJogador));
+                        System.out.println("Sua jogada: ");
+                        imprimeTabuleiro(tabuleiro);
                     } else if (quemJogara == 0) {
                         int jogada;
                         boolean isValido = false;
@@ -43,6 +45,9 @@ public class ModoNormal {
                                 tabuleiro[jogada] = simboloMaquina;
                             }
                         }
+
+                        System.out.println("jogada da maquina: ");
+                        imprimeTabuleiro(tabuleiro);
                     }
                     Integer result = quemGanhou(tabuleiro, simboloJogador, simboloMaquina);
 
@@ -69,6 +74,7 @@ public class ModoNormal {
             System.out.print("Deseja jogar novamente(S/N)");
             String escolha = sc.nextLine();
             if (escolha.toUpperCase().charAt(0) == 'N') {
+                menu();
                 break whileAlto;
             }
         }

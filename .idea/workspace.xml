@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4f0c2959-112a-4a53-a32d-96a9bd6fbbf9" name="Changes" comment="update modoNormal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jogo/JogadasUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/JogadasUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ferramentas/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ferramentas/Maquina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jogo/ModoNormal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/ModoNormal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748562796331</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update modoNormal">
+      <option name="closed" value="true" />
+      <created>1748563996393</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1748563996393</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,20 +216,6 @@
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/jogo/Menu.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/jogo/JogadasUser.java</url>
-          <line>44</line>
-          <properties class="jogo.JogadasUser" method="validaJogada">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="java-exception" />
