@@ -1,9 +1,13 @@
 package ferramentas;
 
+import static jogo.Usuario.setarJogador;
+
 public class Ranking {
 
     static int vitoriasPlayer1 = 0;
+    static String nomePlayer1 = setarJogador();
     static int vitoriasPlayer2 = 0;
+    static int nomePlayer2 = 0;
     static int vitoriasMaquina = 0;
     static int empates = 0;
 
@@ -21,7 +25,7 @@ public class Ranking {
 
     public static void exibirRanking() {
         System.out.println("🏆 RANKING:");
-        System.out.println("Player 1: " + vitoriasPlayer1);
+        System.out.println("Player 1: "+nomePlayer1+" " + vitoriasPlayer1);
         System.out.println("Player 2: " + vitoriasPlayer2);
         System.out.println("Máquina: " + vitoriasMaquina);
         System.out.println("Empates: " + empates);
