@@ -25,7 +25,7 @@ public class Ranking {
 
     public static void exibirRanking() {
         System.out.println("🏆 RANKING:");
-        System.out.println("Player 1: "+nomePlayer1+" " + vitoriasPlayer1);
+        System.out.println("Player 1: "+nomePlayer1+" "+ vitoriasPlayer1);
         System.out.println("Player 2: " + vitoriasPlayer2);
         System.out.println("Máquina: " + vitoriasMaquina);
         System.out.println("Empates: " + empates);
