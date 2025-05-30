@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import static ferramentas.Ranking.exibirRanking;
 import static jogo.ModoNormal.modoNormal;
+import static jogo.Multiplayer.modoComAmigo;
 import static jogo.modoImpossivel.Loop.jogarModoDificil;
 
 public class Menu {
@@ -17,11 +18,10 @@ public class Menu {
             System.out.print("""
                 1 - Jogar contra a máquina
                 2 - Jogar contra um amigo
-                3 - Sair
                 Sua escolha: """);
             opcao = scan.nextInt();
 
-            if (opcao == 1 || opcao == 2 || opcao == 3) {
+            if (opcao == 1 || opcao == 2) {
                 break;
             } else {
                 System.out.println("Opção inválida. Por favor, escolha 1 ou 2.\n");
@@ -37,7 +37,6 @@ public class Menu {
                 System.out.print("""
                     1 - Impossível
                     2 - Normal
-                    3 - Voltar
                     Sua escolha: """);
                 dificuldade = scan.nextInt();
 
@@ -47,18 +46,16 @@ public class Menu {
                 } else if (dificuldade == 2) {
                     modoNormal();
                     break;
-                } else if (dificuldade == 3) {
-                    menu();
                 }else {
                     System.out.println("Dificuldade inválida. Por favor, escolha 1 ou 2.\n");
                 }
             }
-        } else if (opcao == 2){
-            // Função para jogar com amigo (a implementar!!!!)
+        }if(opcao == 2){
+            modoComAmigo();
+        }
+        else {
 
-        }else if (opcao == 3){
-            System.out.println("Fechando...");
-            System.exit(0);
+
         }
     }
 
