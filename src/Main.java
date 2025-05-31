@@ -8,7 +8,5 @@ import static jogo.Multiplayer.modoComAmigo;
 public class Main {
     public static void main(String[] args) {
         menu();
-
-        //andre corrige o normal
     }
 }

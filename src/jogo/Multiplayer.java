@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import static ferramentas.ImprimeTabuleiro.imprimeTabuleiro;
 import static ferramentas.Ranking.*;
+import static jogo.Menu.jogarNovamente;
+import static jogo.Menu.menu;
 
 public class Multiplayer {
 
@@ -38,7 +40,7 @@ public class Multiplayer {
 
         boolean jogarNovamente;
         do {
-            char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
+            char[] tabuleiro = {'X', 'X', 'X', '-', '-', '-', '-', '-', '-'};
             String jogadorAtual = nome1;
             char simboloAtual = simbolo1;
 
@@ -88,25 +90,6 @@ public class Multiplayer {
                 }
             }
 
-            // Pergunta se quer jogar novamente
-            int escolha;
-            while (true) {
-                System.out.println("\nDeseja jogar novamente ou voltar ao menu?");
-                System.out.println("1 - Jogar novamente");
-                System.out.println("2 - Voltar ao menu");
-                System.out.print("Escolha: ");
-                if (scanner.hasNextInt()) {
-                    escolha = scanner.nextInt();
-                    scanner.nextLine(); // limpar buffer
-                    if (escolha == 1 || escolha == 2) break;
-                } else {
-                    scanner.nextLine(); // limpar entrada inválida
-                }
-                System.out.println("Escolha inválida. Tente novamente.");
-            }
-
-            jogarNovamente = (escolha == 1);
-
-        } while (jogarNovamente);
+        } while (jogarNovamente() == 1);
     }
 }
