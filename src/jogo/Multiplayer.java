@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import static ferramentas.ImprimeTabuleiro.imprimeTabuleiro;
+import static ferramentas.ImprimeTabuleiro.imprimeTabuleiroLetras;
 import static ferramentas.Ranking.*;
 import static jogo.Menu.jogarNovamente;
 import static jogo.Menu.menu;
@@ -45,7 +45,7 @@ public class Multiplayer {
             char simboloAtual = simbolo1;
 
             while (true) {
-                imprimeTabuleiro(tabuleiro);
+                imprimeTabuleiroLetras(tabuleiro);
                 System.out.print(jogadorAtual + ", escolha uma posição (ex: A1, B3): ");
                 String entrada = scanner.next().toUpperCase();
 
@@ -64,7 +64,7 @@ public class Multiplayer {
 
                 Integer resultado = QuemVenceu.quemGanhou(tabuleiro, simbolo1, simbolo2);
                 if (resultado != null) {
-                    imprimeTabuleiro(tabuleiro);
+                    imprimeTabuleiroLetras(tabuleiro);
                     if (resultado == 2) {
                         System.out.println(jogadorAtual + " venceu!");
                         if (jogadorAtual.equals(nome1)) {
