@@ -40,7 +40,7 @@ public class Multiplayer {
 
         boolean jogarNovamente;
         do {
-            char[] tabuleiro = {'X', 'X', 'X', '-', '-', '-', '-', '-', '-'};
+            char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
             String jogadorAtual = nome1;
             char simboloAtual = simbolo1;
 
