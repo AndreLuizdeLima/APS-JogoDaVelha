@@ -1,0 +1,76 @@
+Index: src/jogo/ModoNormal.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package jogo;\r\n\r\nimport java.util.Scanner;\r\n\r\nimport static ferramentas.Maquina.maquinaJogada;\r\nimport static ferramentas.Ranking.registrarVitoria;\r\nimport static jogo.JogadasUser.ondeJoga;\r\nimport static jogo.JogadasUser.validaJogada;\r\nimport static jogo.QuemJoga.quemJoga;\r\nimport static jogo.QuemVenceu.quemGanhou;\r\nimport static jogo.Usuario.escolhaSimbulo;\r\nimport static jogo.Usuario.setarJogador;\r\n\r\npublic class ModoNormal {\r\n    public static void modoNormal() {\r\n        Scanner sc = new Scanner(System.in);\r\n        char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};\r\n\r\n        whileAlto:\r\n        while (true) {\r\n\r\n            whileMedio:\r\n            while (true) {\r\n                String nomeJogador = setarJogador();\r\n                char simboloJogador = escolhaSimbulo().charAt(0);\r\n                char simboloMaquina = (simboloJogador == 'X') ? 'O' : 'X';\r\n                int quemJoga = quemJoga();\r\n\r\n                boolean condPara = true;\r\n                whileInterno:\r\n                while(true){\r\n                    if (quemJoga() == 1) {\r\n                        ondeJoga(tabuleiro, String.valueOf(simboloJogador));\r\n                    } else if (quemJoga() == 0) {\r\n                        int jogada;\r\n                        boolean isValido = false;\r\n                        while (!isValido) {\r\n                            jogada = maquinaJogada(tabuleiro);\r\n                            isValido = validaJogada(jogada, tabuleiro);\r\n                            if (isValido) {\r\n                                tabuleiro[jogada] = simboloMaquina;\r\n                            }\r\n                        }\r\n                    }\r\n                    int result = quemGanhou(tabuleiro,simboloJogador,simboloMaquina);\r\n\r\n                    if(result == 1){\r\n                        System.out.println(\"maquina venceu\");\r\n                        registrarVitoria(1);\r\n                        break whileMedio;\r\n                    }\r\n                    if (result == 2){\r\n                        System.out.println(\"jogador ganhou\");\r\n                        registrarVitoria(2);\r\n                        break whileMedio;\r\n                    }\r\n                    if(result == 0){\r\n                        System.out.println(\"Empate\");\r\n                        registrarVitoria(0);\r\n                        break whileMedio;\r\n                    }\r\n                }\r\n            }\r\n\r\n            System.out.print(\"Deseja jogar novamente(S/N)\");\r\n            String escolha = sc.nextLine();\r\n            if(escolha.toUpperCase().charAt(0) == 'N'){\r\n                break whileAlto;\r\n            }\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/jogo/ModoNormal.java b/src/jogo/ModoNormal.java
+--- a/src/jogo/ModoNormal.java	(revision 2bf384efee4fbc33bc17c1dbd2ef5a9ed43652f5)
++++ b/src/jogo/ModoNormal.java	(date 1748565260987)
+@@ -22,7 +22,7 @@
+             whileMedio:
+             while (true) {
+                 String nomeJogador = setarJogador();
+-                char simboloJogador = escolhaSimbulo().charAt(0);
++                char simboloJogador = Character.toUpperCase(escolhaSimbulo().charAt(0));
+                 char simboloMaquina = (simboloJogador == 'X') ? 'O' : 'X';
+                 int quemJoga = quemJoga();
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4f0c2959-112a-4a53-a32d-96a9bd6fbbf9\" name=\"Changes\" comment=\"add modoNormal\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/jogo/JogadasUser.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/jogo/JogadasUser.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/jogo/ModoNormal.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/jogo/ModoNormal.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/jogo/QuemVenceu.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/jogo/QuemVenceu.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;AndreLuizdeLima&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/AndreLuizdeLima/APS-JogoDaVelha.git&quot;,\r\n    &quot;accountId&quot;: &quot;5a66bb31-679a-44e3-a584-c794a9a6efc7&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2xTD74CyXuUBhmVHGl34hHgpf9o\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4f0c2959-112a-4a53-a32d-96a9bd6fbbf9\" name=\"Changes\" comment=\"\" />\r\n      <created>1747953000885</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1747953000885</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"add imprimiTabuleiro\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748300583650</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748300583650</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"add quemJoga\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748301567628</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748301567629</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"add definindo jogo\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748303336889</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748303336889</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"atualizando maquina\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748303680320</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748303680320</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"atualizando classe jogo\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748304428075</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748304428075</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"atualizando classe jogo\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748304891448</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748304891448</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"corecao de bugs\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748311658966</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748311658966</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"add classe quemVenceu\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748472982124</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748472982124</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"add modoNormal\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748473599134</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748473599134</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"10\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"add imprimiTabuleiro\" />\r\n    <MESSAGE value=\"add quemJoga\" />\r\n    <MESSAGE value=\"add definindo jogo\" />\r\n    <MESSAGE value=\"atualizando maquina\" />\r\n    <MESSAGE value=\"atualizando classe jogo\" />\r\n    <MESSAGE value=\"corecao de bugs\" />\r\n    <MESSAGE value=\"add classe quemVenceu\" />\r\n    <MESSAGE value=\"add modoNormal\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"add modoNormal\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2bf384efee4fbc33bc17c1dbd2ef5a9ed43652f5)
++++ b/.idea/workspace.xml	(date 1748565702043)
+@@ -6,9 +6,7 @@
+   <component name="ChangeListManager">
+     <list default="true" id="4f0c2959-112a-4a53-a32d-96a9bd6fbbf9" name="Changes" comment="add modoNormal">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/jogo/JogadasUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/JogadasUser.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/jogo/ModoNormal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/ModoNormal.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/jogo/QuemVenceu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/QuemVenceu.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -41,7 +39,7 @@
+   &quot;associatedIndex&quot;: 0
+ }</component>
+   <component name="ProjectId" id="2xTD74CyXuUBhmVHGl34hHgpf9o" />
+-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
++  <component name="ProjectLevelVcsManager">
+     <ConfirmationsSetting value="2" id="Add" />
+   </component>
+   <component name="ProjectViewState">
+@@ -52,12 +50,27 @@
+   &quot;keyToString&quot;: {
+     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+   }
+ }</component>
++  <component name="RunManager">
++    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="Main" />
++      <module name="jogoDaVelha" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Application.Main" />
++      </list>
++    </recent_temporary>
++  </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
