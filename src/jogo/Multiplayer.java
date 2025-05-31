@@ -23,7 +23,7 @@ public class Multiplayer {
         while (true) {
             System.out.print(nome1 + ", escolha seu símbolo (X ou O): ");
             simbolo1 = Character.toUpperCase(scanner.next().charAt(0));
-            scanner.nextLine(); // limpar buffer
+            scanner.nextLine();
             if (simbolo1 == 'X' || simbolo1 == 'O') break;
             System.out.println("Símbolo inválido.");
         }
