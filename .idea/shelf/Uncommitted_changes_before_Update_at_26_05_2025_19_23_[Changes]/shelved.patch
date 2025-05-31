@@ -1,0 +1,32 @@
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Main {\r\n    public static void main(String[] args) {\r\n        System.out.println(\"Hello world!\");\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	(revision e9db5655dd0497ff531ac1bc28b267512f23d205)
++++ b/src/Main.java	(date 1747956959518)
+@@ -1,5 +1,20 @@
+ public class Main {
+     public static void main(String[] args) {
+         System.out.println("Hello world!");
++        
++
++        int[][] jogo = new int[3][3];
++    }
++
++    public static boolean validaQuemganhou(int[][] jogo){
++        return true;
+     }
++
++    public static void imprimeTabuleiro(int[][] jogo){
++        System.out.println();
++    }
++    public static void defineJogada(int[][] jogo){
++
++    }
++
+ }
+\ No newline at end of file

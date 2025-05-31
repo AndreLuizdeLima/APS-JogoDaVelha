@@ -1,0 +1,142 @@
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nimport static ferramentas.Maquina.maquinaJogada;\r\nimport static jogo.JogadasUser.validaJogada;\r\nimport static jogo.Menu.menu;\r\nimport static jogo.ModoNormal.modoNormal;\r\n\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n        menu();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	(revision b1c82914adc5412973eaa89af0e9406db269d6a5)
++++ b/src/Main.java	(date 1748642935047)
+@@ -3,6 +3,7 @@
+ import static jogo.JogadasUser.validaJogada;
+ import static jogo.Menu.menu;
+ import static jogo.ModoNormal.modoNormal;
++import static jogo.Multiplayer.modoComAmigo;
+ 
+ public class Main {
+     public static void main(String[] args) {
+Index: src/jogo/Multiplayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package jogo;\r\n\r\nimport java.util.Scanner;\r\n\r\npublic class Multiplayer {\r\n    public static void modoComAmigo() {\r\n        Scanner scanner = new Scanner(System.in);\r\n        char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};\r\n\r\n        // Nomes\r\n        System.out.print(\"Nome do Jogador 1: \");\r\n        String nome1 = scanner.nextLine();\r\n        System.out.print(\"Nome do Jogador 2: \");\r\n        String nome2 = scanner.nextLine();\r\n\r\n        // Símbolos\r\n        char simbolo1, simbolo2;\r\n        while (true) {\r\n            System.out.print(nome1 + \", escolha seu símbolo (X ou O): \");\r\n            simbolo1 = Character.toUpperCase(scanner.next().charAt(0));\r\n            if (simbolo1 == 'X' || simbolo1 == 'O') break;\r\n            System.out.println(\"Símbolo inválido.\");\r\n        }\r\n        simbolo2 = (simbolo1 == 'X') ? 'O' : 'X';\r\n\r\n        System.out.println(nome1 + \" é '\" + simbolo1 + \"', \" + nome2 + \" é '\" + simbolo2 + \"'\");\r\n\r\n        // Começa o jogo\r\n        String jogadorAtual = nome1;\r\n        char simboloAtual = simbolo1;\r\n\r\n        while (true) {\r\n            imprimirTabuleiro(tabuleiro);\r\n            System.out.println(jogadorAtual + \", escolha uma posição (1-9): \");\r\n            int posicao = scanner.nextInt() - 1;\r\n\r\n            if (posicao < 0 || posicao > 8 || tabuleiro[posicao] != '-') {\r\n                System.out.println(\"Jogada inválida. Tente novamente.\");\r\n                continue;\r\n            }\r\n\r\n            tabuleiro[posicao] = simboloAtual;\r\n\r\n            int resultado = QuemVenceu.quemGanhou(tabuleiro, simbolo1, simbolo2);\r\n            if (resultado == 2) {\r\n                imprimirTabuleiro(tabuleiro);\r\n                System.out.println(jogadorAtual + \" venceu!\");\r\n                break;\r\n            } else if (resultado == 0) {\r\n                imprimirTabuleiro(tabuleiro);\r\n                System.out.println(\"Empate!\");\r\n                break;\r\n            }\r\n\r\n            // Trocar jogador\r\n            if (jogadorAtual.equals(nome1)) {\r\n                jogadorAtual = nome2;\r\n                simboloAtual = simbolo2;\r\n            } else {\r\n                jogadorAtual = nome1;\r\n                simboloAtual = simbolo1;\r\n            }\r\n        }\r\n    }\r\n\r\n    private static void imprimirTabuleiro(char[] tabuleiro) {\r\n        System.out.println();\r\n        for (int i = 0; i < tabuleiro.length; i++) {\r\n            System.out.print(\" \" + tabuleiro[i] + \" \");\r\n            if ((i + 1) % 3 == 0) System.out.println();\r\n        }\r\n        System.out.println();\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/jogo/Multiplayer.java b/src/jogo/Multiplayer.java
+--- a/src/jogo/Multiplayer.java	(revision b1c82914adc5412973eaa89af0e9406db269d6a5)
++++ b/src/jogo/Multiplayer.java	(date 1748569345259)
+@@ -6,7 +6,10 @@
+     public static void modoComAmigo() {
+         Scanner scanner = new Scanner(System.in);
+         char[] tabuleiro = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
++        char[] teste = {'-', '-', '-', '-', '-', '-', '-', '-', '-'};
+ 
++
++        imprimirTabuleiro(teste);
+         // Nomes
+         System.out.print("Nome do Jogador 1: ");
+         String nome1 = scanner.nextLine();
+Index: src/ferramentas/ImprimeTabuleiro.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ferramentas;\r\n\r\npublic class ImprimeTabuleiro {\r\n\r\n\r\n\r\n     public static void imprimeTabuleiro(char[] tabuleiro){\r\n        char[] posicoes = tabuleiro;\r\n\r\n        System.out.print(\"\"\"\r\n             1   2   3\r\n           +---+---+---+\r\n        A  | %s | %s | %s |\r\n           +---+---+---+\r\n        B  | %s | %s | %s |\r\n           +---+---+---+\r\n        C  | %s | %s | %s |\r\n           +---+---+---+\r\n        \"\"\".formatted(\r\n                posicoes[0], posicoes[1], posicoes[2],\r\n                posicoes[3], posicoes[4], posicoes[5],\r\n                posicoes[6], posicoes[7], posicoes[8]\r\n        ));\r\n    }\r\n\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/ferramentas/ImprimeTabuleiro.java b/src/ferramentas/ImprimeTabuleiro.java
+--- a/src/ferramentas/ImprimeTabuleiro.java	(revision b1c82914adc5412973eaa89af0e9406db269d6a5)
++++ b/src/ferramentas/ImprimeTabuleiro.java	(date 1748569210500)
+@@ -10,11 +10,11 @@
+         System.out.print("""
+              1   2   3
+            +---+---+---+
+-        A  | %s | %s | %s |
++        1  | %s | %s | %s |
+            +---+---+---+
+-        B  | %s | %s | %s |
++        2  | %s | %s | %s |
+            +---+---+---+
+-        C  | %s | %s | %s |
++        3  | %s | %s | %s |
+            +---+---+---+
+         """.formatted(
+                 posicoes[0], posicoes[1], posicoes[2],
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4f0c2959-112a-4a53-a32d-96a9bd6fbbf9\" name=\"Changes\" comment=\"update modoNormal\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/ferramentas/Maquina.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/ferramentas/Maquina.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/jogo/ModoNormal.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/jogo/ModoNormal.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;AndreLuizdeLima&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/AndreLuizdeLima/APS-JogoDaVelha.git&quot;,\r\n    &quot;accountId&quot;: &quot;5a66bb31-679a-44e3-a584-c794a9a6efc7&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2xTD74CyXuUBhmVHGl34hHgpf9o\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4f0c2959-112a-4a53-a32d-96a9bd6fbbf9\" name=\"Changes\" comment=\"\" />\r\n      <created>1747953000885</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1747953000885</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"add imprimiTabuleiro\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748300583650</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748300583650</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"add quemJoga\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748301567628</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748301567629</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"add definindo jogo\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748303336889</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748303336889</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"atualizando maquina\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748303680320</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748303680320</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"atualizando classe jogo\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748304428075</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748304428075</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"atualizando classe jogo\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748304891448</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748304891448</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"corecao de bugs\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748311658966</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748311658966</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"add classe quemVenceu\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748472982124</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748472982124</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"add modoNormal\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748473599134</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748473599134</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"update modoNormal\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748484939533</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748484939533</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"update modoNormal\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748485054684</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748485054684</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"update modoNormal\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748561918161</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748561918161</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"update modoNormal\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748562796331</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748562796331</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"update modoNormal\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1748563996393</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1748563996393</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"15\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"add imprimiTabuleiro\" />\r\n    <MESSAGE value=\"add quemJoga\" />\r\n    <MESSAGE value=\"add definindo jogo\" />\r\n    <MESSAGE value=\"atualizando maquina\" />\r\n    <MESSAGE value=\"atualizando classe jogo\" />\r\n    <MESSAGE value=\"corecao de bugs\" />\r\n    <MESSAGE value=\"add classe quemVenceu\" />\r\n    <MESSAGE value=\"add modoNormal\" />\r\n    <MESSAGE value=\"update modoNormal\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"update modoNormal\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.NullPointerException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </breakpoint>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.ArrayIndexOutOfBoundsException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"4\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n      <default-breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\" />\r\n      </default-breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b1c82914adc5412973eaa89af0e9406db269d6a5)
++++ b/.idea/workspace.xml	(date 1748569345415)
+@@ -4,11 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="4f0c2959-112a-4a53-a32d-96a9bd6fbbf9" name="Changes" comment="update modoNormal">
++    <list default="true" id="4f0c2959-112a-4a53-a32d-96a9bd6fbbf9" name="Changes" comment="implementado modoNormal">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/ferramentas/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ferramentas/Maquina.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/jogo/ModoNormal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/ModoNormal.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/ferramentas/ImprimeTabuleiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ferramentas/ImprimeTabuleiro.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/jogo/Multiplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jogo/Multiplayer.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -48,16 +48,16 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.Main.executor": "Run",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "git-widget-placeholder": "main",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "kotlin-language-version-configured": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+@@ -179,7 +179,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1748563996393</updated>
+     </task>
+-    <option name="localTasksCounter" value="15" />
++    <task id="LOCAL-00015" summary="implementado modoNormal">
++      <option name="closed" value="true" />
++      <created>1748566236471</created>
++      <option name="number" value="00015" />
++      <option name="presentableId" value="LOCAL-00015" />
++      <option name="project" value="LOCAL" />
++      <updated>1748566236471</updated>
++    </task>
++    <option name="localTasksCounter" value="16" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -203,7 +211,8 @@
+     <MESSAGE value="add classe quemVenceu" />
+     <MESSAGE value="add modoNormal" />
+     <MESSAGE value="update modoNormal" />
+-    <option name="LAST_COMMIT_MESSAGE" value="update modoNormal" />
++    <MESSAGE value="implementado modoNormal" />
++    <option name="LAST_COMMIT_MESSAGE" value="implementado modoNormal" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
