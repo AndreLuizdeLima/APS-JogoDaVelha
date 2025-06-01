@@ -192,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748643300403</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="ajuste Multiplayer">
+      <option name="closed" value="true" />
+      <created>1748723145260</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1748723145260</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,7 +226,8 @@
     <MESSAGE value="update modoNormal" />
     <MESSAGE value="implementado modoNormal" />
     <MESSAGE value="atualizando modo normal para o padrão" />
-    <option name="LAST_COMMIT_MESSAGE" value="atualizando modo normal para o padrão" />
+    <MESSAGE value="ajuste Multiplayer" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajuste Multiplayer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
